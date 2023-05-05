@@ -1,19 +1,33 @@
 # hexo-deployer-git
 
-[![Build Status](https://github.com/hexojs/hexo-deployer-git/workflows/Tester/badge.svg)](https://github.com/hexojs/hexo-deployer-git/actions?query=workflow%3ATester)
-[![NPM version](https://badge.fury.io/js/hexo-deployer-git.svg)](https://www.npmjs.com/package/hexo-deployer-git)
-[![Coverage Status](https://img.shields.io/coveralls/hexojs/hexo-deployer-git.svg)](https://coveralls.io/r/hexojs/hexo-deployer-git?branch=master)
-
-Git deployer plugin for [Hexo].
-
-## Notice: Fatal HttpRequestException Error on pushing to GitHub?
-Update [Git for Windows](https://github.com/git-for-windows/git/releases) to the latest version. ([Details](https://github.com/Microsoft/Git-Credential-Manager-for-Windows#notice-experiencing-github-pushfetch-problems))
-
+Forked from [hexojs/hexo-deployer-git](https://github.com/hexojs/hexo-deployer-git).
+Added following features:
+- support to push to repository subfolder (repository site), e.g.: `username/some-repo/docs`
 ## Installation
 
 ``` bash
-$ npm install hexo-deployer-git --save
+$ npm install https://github.com/yaanggny/hexo-deployer-git
 ```
+
+## Options
+
+You just add `repo_subdir` in `_config.yml`:
+
+``` yaml
+# You can use this:
+deploy:
+  type: git
+  repo: <repository url>
+  branch: [branch]
+  # repo_subdir: ''     # push to root of the repo (same as the old plugin)
+  repo_subdir: docs   # push to repo/docs
+  token: ''
+  message: [message]  
+```  
+- **message**: Commit message. Defaults to `update posts.`.
+
+<details>
+<summary>Old document</summary>
 
 ## Options
 
@@ -136,3 +150,6 @@ $ rm -rf .deploy_git
 MIT
 
 [Hexo]: https://hexo.io/
+
+</details>
+
